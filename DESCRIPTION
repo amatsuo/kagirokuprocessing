@@ -1,0 +1,13 @@
+Package: kaigirokuprocessing
+Type: Package
+Title: A collection of helper functions to process kaigiroku text
+Version: 0.1.0
+Authors@R: c(person("Akitaka", "Matsuo", email = "matsuoakitaka", 
+    role = c("aut", "cre") ))
+Maintainer: Akitaka Matsuo <matsuoakitaka@gmail.com>
+Description: Processing kaigroku texits
+Imports: utils, tidyverse, stringi, magrittr
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
