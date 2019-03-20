@@ -6,7 +6,7 @@ Authors@R: c(person("Akitaka", "Matsuo", email = "matsuoakitaka",
     role = c("aut", "cre") ))
 Maintainer: Akitaka Matsuo <matsuoakitaka@gmail.com>
 Description: Processing kaigroku texits
-Imports: utils, tidyverse, stringi, magrittr
+Imports: utils, tidyverse, stringi, magrittr, purrr
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

@@ -7,7 +7,7 @@
 speech_char_count(textstring)
 }
 \arguments{
-\item{textstring}{character vector}
+\item{textstring}{speech text}
 }
 \value{
 integer, number of characters in the speech

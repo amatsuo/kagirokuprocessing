@@ -7,7 +7,7 @@
 speech_clean(textstring)
 }
 \arguments{
-\item{textstring}{character vector}
+\item{textstring}{speech text}
 }
 \value{
 cleaned speech

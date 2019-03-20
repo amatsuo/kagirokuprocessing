@@ -35,8 +35,9 @@ speech_clean <- function(textstring) {
 #'
 #' @description To be written
 #' @param textstring speech text
+#' @param other bool. whether unmached text will be replaced to "Other"
 #' @importFrom magrittr %>%
-#' @return cleaned speech
+#' @return text of speaker capacity
 #' @export
 #'
 
@@ -49,7 +50,12 @@ extract_capacity <- function(textstring, other = TRUE){
     stringi::stri_replace_first_regex( "^.+?(参事|政府特別補佐人|内閣官房|最高裁判所長官代理者|主査|議員|副?大臣|副?議長|委員|参考人|分科員|公述人|君|説明員|参考人|公述人|事務総長|国会図書館長|法制局長(（.+）)?$)", "$1") %>%
     stringi::stri_replace_first_regex("（.+）", "") %>%
     stringi::stri_trim_both()
-  %>%
-    stringi::stri_replace_first_regex("^○.+", "Other")
+
+  if(other){
+    capacity <- capacity %<>%
+      stringi::stri_replace_first_regex("^○.+", "Other")
+
+  }
+  return(capacity)
 }
 

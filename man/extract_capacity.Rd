@@ -2,15 +2,17 @@
 % Please edit documentation in R/functions.R
 \name{extract_capacity}
 \alias{extract_capacity}
-\title{Remove non-speech sections from speech}
+\title{Extract speaker capacity from speech text.}
 \usage{
-extract_capacity(textstring)
+extract_capacity(textstring, other = TRUE)
 }
 \arguments{
-\item{textstring}{character vector}
+\item{textstring}{speech text}
+
+\item{other}{bool. whether unmached text will be replaced to "Other"}
 }
 \value{
-cleaned speech
+text of speaker capacity
 }
 \description{
 To be written
