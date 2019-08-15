@@ -4,12 +4,14 @@
 \alias{extract_capacity}
 \title{Extract speaker capacity from speech text.}
 \usage{
-extract_capacity(textstring, other = TRUE)
+extract_capacity(textstring, other = TRUE, plenary = FALSE)
 }
 \arguments{
 \item{textstring}{speech text}
 
 \item{other}{bool. whether unmached text will be replaced to "Other"}
+
+\item{plenary}{bool. whether the speech is from plenary session}
 }
 \value{
 text of speaker capacity
