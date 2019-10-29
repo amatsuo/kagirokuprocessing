@@ -27,8 +27,8 @@ speech_char_count <- function(textstring) {
 speech_clean <- function(textstring) {
   return(textstring %>% stringi::stri_replace_first_regex("^○\\S+\\s", "") %>%
            stringi::stri_replace_all_regex("\\s+", "") %>%
-           stringi::stri_replace_all_regex("〔.+〕", "") %>%
-           stringi::stri_replace_all_regex("（.+）", ""))
+           stringi::stri_replace_all_regex("〔.+?〕", "") %>%
+           stringi::stri_replace_all_regex("（.+?）", ""))
 }
 
 #' Extract speaker capacity from speech text.
