@@ -36,6 +36,7 @@ speech_clean <- function(textstring) {
 #' @description To be written
 #' @param textstring speech text
 #' @param other bool. whether unmached text will be replaced to "Other"
+#' @param hoc bool. the speech text is from Upper House. default \code{FALSE}
 #' @param plenary bool. whether the speech is from plenary session
 #' @importFrom magrittr %>%
 #' @return text of speaker capacity
@@ -43,8 +44,20 @@ speech_clean <- function(textstring) {
 #'
 
 
-extract_capacity <- function(textstring, other = TRUE, plenary = FALSE){
-  if(!plenary){
+extract_capacity <- function(textstring, other = TRUE, plenary = FALSE,
+                             hoc = FALSE){
+  if(hoc == TRUE) {
+    capacity <- textstring %>%
+      stringi::stri_sub(1, 20) %>%
+      stringi::stri_replace_first_regex("(?<=）).+", "") %>%
+      stringi::stri_replace_first_regex("\\s.+", " ")
+
+    #browser()
+    capacity <- ifelse(stri_detect_regex(capacity, "（"),
+                       stri_extract_first_regex(capacity, "(?<=○).+(?=（)"),
+                       "君")
+    capacity <- ifelse(stri_detect_regex(capacity, "君$"), "君", capacity)
+  } else if(!plenary){
     capacity <- textstring %>%
       stringi::stri_sub(1, 20) %>%
       stringi::stri_replace_first_regex("^(○\\S+?)(\\s|\\n).+", "$1") %>%
@@ -57,10 +70,10 @@ extract_capacity <- function(textstring, other = TRUE, plenary = FALSE){
       stringi::stri_sub(1, 20) %>%
       stringi::stri_replace_first_regex("(?<=）).+", "")
     #browser()
-    capacity <- ifelse(stri_detect_regex(capacity, "（"),
-      stri_extract_first_regex(capacity, "(?<=○).+(?=（)"),
+    capacity <- ifelse(stringi::stri_detect_regex(capacity, "（"),
+                       stringi::stri_extract_first_regex(capacity, "(?<=○).+(?=（)"),
       "君")
-    capacity <- ifelse(stri_detect_regex(capacity, "君$"), "君", capacity)
+    capacity <- ifelse(stringi::stri_detect_regex(capacity, "君$"), "君", capacity)
 
   }
 
